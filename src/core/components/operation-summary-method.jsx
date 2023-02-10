@@ -19,7 +19,9 @@ export default class OperationSummaryMethod extends PureComponent {
     } = this.props
 
     return (
-      <span className="opblock-summary-method">{method.toUpperCase()}</span>
+      <span className={`opblock-summary-method-custom opblock-summary-method-custom-${method}`}>
+        <i>{method.toUpperCase()}</i>
+      </span>
     )
   }
 }

@@ -62,8 +62,9 @@ export default class OperationSummary extends PureComponent {
     const hasSecurity = security && !!security.count()
     const securityIsOptional = hasSecurity && security.size === 1 && security.first().isEmpty()
     const allowAnonymous = !hasSecurity || securityIsOptional
+
     return (
-      <div className={`opblock-summary opblock-summary-${method}`} >
+      <div className={`opblock-summary opblock-summary-${method}`}>
         <button
           aria-label={`${method} ${path.replace(/\//g, "\u200b/")}`}
           aria-expanded={isShown}
@@ -79,23 +80,22 @@ export default class OperationSummary extends PureComponent {
             </div>
           }
 
-          {displayOperationId && (originalOperationId || operationId) ? <span className="opblock-summary-operation-id">{originalOperationId || operationId}</span> : null}
-
-          <svg className="arrow" width="20" height="20" aria-hidden="true" focusable="false">
-            <use href={isShown ? "#large-arrow-up" : "#large-arrow-down"} xlinkHref={isShown ? "#large-arrow-up" : "#large-arrow-down"} />
-          </svg>
+          {displayOperationId && (originalOperationId || operationId) ?
+            <span className="opblock-summary-operation-id">{originalOperationId || operationId}</span>: null
+          }
         </button>
 
-        {
-          allowAnonymous ? null :
-            <AuthorizeOperationBtn
-              isAuthorized={isAuthorized}
-              onClick={() => {
-                const applicableDefinitions = authSelectors.definitionsForRequirements(security)
-                authActions.showDefinitions(applicableDefinitions)
-              }}
-            />
-        }
+        {/*{*/}
+        {/*  allowAnonymous ? null :*/}
+        {/*    <AuthorizeOperationBtn*/}
+        {/*      isAuthorized={isAuthorized}*/}
+        {/*      onClick={() => {*/}
+        {/*        const applicableDefinitions = authSelectors.definitionsForRequirements(security)*/}
+        {/*        authActions.showDefinitions(applicableDefinitions)*/}
+        {/*      }}*/}
+        {/*    />*/}
+        {/*}*/}
+
         <JumpToPath path={specPath} />{/* TODO: use wrapComponents here, swagger-ui doesn't care about jumpToPath */}
       </div>
     )

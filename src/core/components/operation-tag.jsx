@@ -68,54 +68,31 @@ export default class OperationTag extends React.Component {
     let showTag = layoutSelectors.isShown(isShownKey, docExpansion === "full" || docExpansion === "list")
 
     return (
-      <div className={showTag ? "opblock-tag-section is-open" : "opblock-tag-section"} >
+      <div className="opblock-tag-section is-open" >
 
-        <h3
-          onClick={() => layoutActions.show(isShownKey, !showTag)}
-          className={!tagDescription ? "opblock-tag no-desc" : "opblock-tag"}
-          id={isShownKey.map(v => escapeDeepLinkPath(v)).join("-")}
-          data-tag={tag}
-          data-is-open={showTag}
-        >
-          <DeepLink
-            enabled={isDeepLinkingEnabled}
-            isShown={showTag}
-            path={createDeepLinkPath(tag)}
-            text={tag} />
-          {!tagDescription ? <small></small> :
-            <small>
-              <Markdown source={tagDescription} />
-            </small>
-          }
-
-          {!tagExternalDocsDescription ? null :
-            <div className="info__externaldocs">
-              <small>
-                {tagExternalDocsDescription}
-                {tagExternalDocsUrl ? ": " : null}
-                {tagExternalDocsUrl ?
-                  <Link
-                    href={sanitizeUrl(tagExternalDocsUrl)}
-                    onClick={(e) => e.stopPropagation()}
-                    target="_blank"
-                  >{tagExternalDocsUrl}</Link> : null
-                }
-              </small>
-            </div>
-          }
-
-
-          <button
-            aria-expanded={showTag}
-            className="expand-operation"
-            title={showTag ? "Collapse operation" : "Expand operation"}
-            onClick={() => layoutActions.show(isShownKey, !showTag)}>
-
-            <svg className="arrow" width="20" height="20" aria-hidden="true" focusable="false">
-              <use href={showTag ? "#large-arrow-up" : "#large-arrow-down"} xlinkHref={showTag ? "#large-arrow-up" : "#large-arrow-down"} />
-            </svg>
-          </button>
-        </h3>
+        {!tagExternalDocsDescription ? null :
+          <h2
+            id={isShownKey.map(v => escapeDeepLinkPath(v)).join("-")}
+            data-tag={tag}
+            data-is-open={showTag}
+          >
+            {!tagExternalDocsDescription ? null :
+              <div className="info__externaldocs">
+                <small>
+                  {tagExternalDocsDescription}
+                  {tagExternalDocsUrl ? ": " : null}
+                  {tagExternalDocsUrl ?
+                    <Link
+                      href={sanitizeUrl(tagExternalDocsUrl)}
+                      onClick={(e) => e.stopPropagation()}
+                      target="_blank"
+                    >{tagExternalDocsUrl}</Link> : null
+                  }
+                </small>
+              </div>
+            }
+          </h2>
+        }
 
         <Collapse isOpened={showTag}>
           {children}

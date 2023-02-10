@@ -67,7 +67,6 @@ const HighlightCode = ({value, fileName, className, downloadable, getConfigs, ca
         </SyntaxHighlighter>
         : <pre className={cx(className, "microlight")}>{value}</pre>
       }
-
     </div>
   )
 }

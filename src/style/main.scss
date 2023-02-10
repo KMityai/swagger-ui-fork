@@ -19,3 +19,306 @@
     @import 'split-pane-mode';
     @import 'markdown';
 }
+
+@import url(//fonts.googleapis.com/css?family=Ubuntu:300,400,700&subset=cyrillic-ext,latin);
+@import url(//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic&subset=latin,cyrillic-ext);
+
+.swagger-ui {
+  color: #1E2248;
+  font-family: "Ubuntu";
+}
+
+.swagger-ui .wrapper,
+.swagger-ui .wrapper > .block-desktop {
+  padding: 0;
+}
+
+.swagger-ui .opblock-tag {
+  color: #1E2248;
+}
+
+summary-operation-id, .swagger-ui .opblock .opblock-summary-path, .swagger-ui .opblock .opblock-summary-path__deprecated {
+  color: #1E2248;
+}
+
+.swagger-ui .opblock .opblock-summary-description {
+  color: #1E2248;
+}
+
+.swagger-ui .opblock .opblock-summary {
+  padding: 0;
+}
+
+.swagger-ui .opblock {
+  font-family: "Ubuntu";
+  border: none;
+  padding: 2px 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  clear: both;
+  border-radius: 2px;
+  box-shadow: none;
+  margin: 0 0 3px 0;
+}
+
+.swagger-ui .opblock.opblock-get {
+  background: #edf4ff;
+}
+
+.swagger-ui .opblock.opblock-path,
+.swagger-ui .opblock.opblock-post,
+.swagger-ui .opblock.opblock-put, {
+  background: #e9fbf6;
+}
+
+.swagger-ui .opblock-summary-method-custom{
+  margin-right: 20px;
+  min-width: 55px;
+  display: inline-block;
+}
+
+.swagger-ui .opblock-summary-method-custom > i{
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 2px;
+  font-style: normal;
+}
+
+.swagger-ui .opblock-summary-method-custom-get > i {
+  background-color: #0068ff;
+}
+
+.swagger-ui .opblock-summary-method-custom-post {
+  margin-right: 24px;
+}
+
+.swagger-ui .opblock-summary-method-custom-patch {
+  margin-right: 17px;
+}
+.swagger-ui .opblock-summary-method-custom-patch > i,
+.swagger-ui .opblock-summary-method-custom-post > i,
+.swagger-ui .opblock-summary-method-custom-put > i {
+  background-color: #20a77f;
+}
+
+.swagger-ui .opblock-summary-method-custom-delete {
+  margin-right: 9px;
+}
+
+.swagger-ui .opblock-summary-method-custom-delete > i {
+  background-color: #f93e3e;
+}
+
+.swagger-ui .opblock .opblock-summary-description {
+  text-align: right;
+  font-weight: 300;
+  font-size: 12px;
+  color: #666;
+  float: right;
+  margin-right: 5px;
+}
+.swagger-ui h2 {
+  font-family: "Ubuntu";
+  margin: 17px 0;
+}
+
+.swagger-ui .opblock-summary-get > button a,
+.swagger-ui .opblock-summary-post > button a,
+.swagger-ui .opblock-summary-put > button a,
+.swagger-ui .opblock-summary-patch > button a,
+.swagger-ui .opblock-summary-delete > button {
+  display: block;
+  padding: 5px 0;
+}
+
+.swagger-ui .opblock-summary-get,
+.swagger-ui .opblock-summary-post,
+.swagger-ui .opblock-summary-put,
+.swagger-ui .opblock-summary-patch,
+.swagger-ui .opblock-summary-delete {
+  padding: 0 5px !important;
+}
+
+.swagger-ui .opblock-summary-get {
+  background: #edf4ff;
+  border: none !important;
+}
+
+.swagger-ui .opblock.opblock-patch,
+.swagger-ui .opblock.opblock-post,
+.swagger-ui .opblock.opblock-put,
+.swagger-ui .opblock.opblock-delete{
+  border: none;
+}
+
+.swagger-ui .opblock-summary-post,
+.swagger-ui .opblock-summary-put,
+.swagger-ui .opblock-summary-patch {
+  background: rgb(239 252 249);
+  border: none !important;
+}
+
+.swagger-ui .opblock-summary-delete {
+  background: rgb(255 236 235);
+  border: none !important;
+}
+
+.swagger-ui .opblock {
+  background: white !important;
+  border: none;
+  padding: 0;
+  cursor: default;
+}
+
+.swagger-ui .opblock-description-wrapper,
+.swagger-ui .parameters-container .table-container,
+.swagger-ui .responses-wrapper .responses-inner {
+  padding: 0;
+}
+
+.swagger-ui .responses-wrapper {
+  cursor: initial;
+}
+
+.swagger-ui .table-container table.parameters,
+.swagger-ui .responses-inner table.responses-table {
+  width: 100%;
+  margin-bottom: 20px;
+
+  font-size: 12px;
+  border: 1px solid #dddddd;
+  border-collapse: separate;
+  border-left: 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.swagger-ui .table-container table,
+.swagger-ui .responses-inner table {
+  padding: 0;
+  border-spacing: 0;
+}
+
+.swagger-ui .table-container table.parameters thead:first-child tr:first-child > th:first-child,
+.swagger-ui .responses-inner table.responses-table thead:first-child tr:first-child > th:first-child{
+  border-top-left-radius: 4px !important;
+}
+
+.swagger-ui .table-container table.parameters th,
+.swagger-ui .responses-inner table.responses-table th,
+.swagger-ui .responses-inner table.responses-table tr.responses-header td{
+  padding: 4px 8px;
+  line-height: 24px;
+  text-align: left;
+  border-left: 1px solid #dddddd;
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.swagger-ui .table-container table.parameters td,
+.swagger-ui .responses-inner table.responses-table td{
+  padding: 4px 8px;
+  line-height: 24px;
+  text-align: left;
+  vertical-align: middle;
+  border-top: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.swagger-ui .table-container .parameter__name {
+  position: relative;
+  padding: 2px 4px;
+  color: #d14;
+  white-space: nowrap;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  font-family: "Ubuntu Mono", Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-size: 14px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  display: inline;
+}
+
+.swagger-ui .parameters-col_description .markdown {
+  display: inline-block;
+}
+
+.swagger-ui .parameters-col_description .markdown p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 24px;
+}
+
+.swagger-ui .opblock-body pre.microlight code,
+.swagger-ui .opblock-body pre.microlight code > span {
+  background-color: rgb(51, 51, 51);
+}
+
+.swagger-ui .opblock-body pre.microlight code {
+  font-size: 12px;
+}
+
+.swagger-ui .table-container .model-example > ul > li.active,
+.swagger-ui td.response-col_description .model-example > ul > li.active {
+  display: list-item;
+}
+
+.swagger-ui .opblock-section {
+  cursor: initial;
+}
+
+.swagger-ui h4 {
+  font-weight: 400;
+  margin-bottom: 5px;
+  font-family: "Ubuntu";
+  font-size: 14px;
+}
+
+.swagger-ui code.param__type {
+  position: relative;
+  padding: 2px 4px;
+  color: #d14;
+  white-space: nowrap;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  font-family: "Ubuntu Mono", Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-size: 14px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  display: inline;
+  font-weight: 400;
+}
+
+.swagger-ui div.highlight-code pre,
+.swagger-ui div.highlight-code pre > code.language-json,
+.swagger-ui div.highlight-code pre > code.language-json > span {
+  font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace !important;
+  word-break: break-word;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -.38px;
+  font-weight: initial;
+  background: #f4f6f8 !important;
+  color: #0044b7;
+}
+
+.swagger-ui div.highlight-code pre > code.language-json > span.hljs-attr,
+.swagger-ui div.highlight-code pre > code.language-json > span[style] {
+  background: #f4f6f8 !important;
+  color: #eb5757 !important;
+}
+
+.swagger-ui td.parameters-col_description p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: normal;
+}
+
+.swagger-ui .responses-wrapper h4,
+.swagger-ui .operation-tag-content h4 {
+  padding: 0 0 5px 0;
+}

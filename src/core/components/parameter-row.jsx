@@ -268,6 +268,16 @@ export default class ParameterRow extends Component {
       }
     }
 
+    let modelName;
+
+    if (schema.get('type') === 'object') {
+      const match = schema.get('$$ref').match(/\w+$/gm);
+
+      if (match.length > 0) {
+        modelName = match[0];
+      }
+    }
+
     return (
       <tr data-param-name={param.get("name")} data-param-in={param.get("in")}>
         <td className="parameters-col_name">
@@ -275,28 +285,37 @@ export default class ParameterRow extends Component {
             { param.get("name") }
             { !required ? null : <span>&nbsp;*</span> }
           </div>
-          <div className="parameter__type">
-            { type }
-            { itemType && `[${itemType}]` }
-            { format && <span className="prop-format">(${format})</span>}
-          </div>
           <div className="parameter__deprecated">
             { isOAS3 && param.get("deprecated") ? "deprecated": null }
           </div>
-          <div className="parameter__in">({ param.get("in") })</div>
-          { !showCommonExtensions || !commonExt.size ? null : commonExt.entrySeq().map(([key, v]) => <ParameterExt key={`${key}-${v}`} xKey={key} xVal={v} /> )}
-          { !showExtensions || !extensions.size ? null : extensions.entrySeq().map(([key, v]) => <ParameterExt key={`${key}-${v}`} xKey={key} xVal={v} /> )}
+          {/*<div className="parameter__in">*/}
+          {/*  ({ param.get("in") })*/}
+          {/*</div>*/}
+      </td>
+
+        <td>
+          {
+            !modelName ?
+            <code className={'param__type'}>{schema.get('type')}</code>
+            :
+            <a href={'#model-' + modelName} style={{textDecoration: "none"}}>
+              <code className={'param__type'}>{schema.get('type')} ({modelName})</code>
+            </a>
+          }
         </td>
 
         <td className="parameters-col_description">
           { param.get("description") ? <Markdown source={ param.get("description") }/> : null }
 
           { (bodyParam || !isExecute) && isDisplayParamEnum ?
-            <Markdown className="parameter__enum" source={
-                "<i>Available values</i> : " + paramEnum.map(function(item) {
-                    return item
-                  }).toArray().join(", ")}/>
-            : null
+            <div>
+              <Markdown className="parameter__enum" source={
+                  "<i>Доступные значения</i> : (" + paramEnum.map(function(item) {
+                      return item
+                    }).toArray().join(", ")}/>
+              )
+            </div>
+              : null
           }
 
           { (bodyParam || !isExecute) && paramDefaultValue !== undefined ?
@@ -305,7 +324,7 @@ export default class ParameterRow extends Component {
           }
 
           { (bodyParam || !isExecute) && paramExample !== undefined ?
-            <Markdown source={"<i>Example</i> : " + paramExample}/>
+            <div><Markdown source={"<i>Пример</i>  : " + paramExample}/></div>
             : null
           }
 
@@ -327,17 +346,17 @@ export default class ParameterRow extends Component {
             ) : null
           }
 
-          { bodyParam ? null
-            : <JsonSchemaForm fn={fn}
-                              getComponent={getComponent}
-                              value={ value }
-                              required={ required }
-                              disabled={!isExecute}
-                              description={param.get("name")}
-                              onChange={ this.onChangeWrapper }
-                              errors={ paramWithMeta.get("errors") }
-                              schema={ schema }/>
-          }
+          {/*{ bodyParam ? null*/}
+          {/*  : <JsonSchemaForm fn={fn}*/}
+          {/*                    getComponent={getComponent}*/}
+          {/*                    value={ value }*/}
+          {/*                    required={ required }*/}
+          {/*                    disabled={!isExecute}*/}
+          {/*                    description={param.get("name")}*/}
+          {/*                    onChange={ this.onChangeWrapper }*/}
+          {/*                    errors={ paramWithMeta.get("errors") }*/}
+          {/*                    schema={ schema }/>*/}
+          {/*}*/}
 
 
           {

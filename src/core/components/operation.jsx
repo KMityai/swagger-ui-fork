@@ -141,6 +141,7 @@ export default class Operation extends PureComponent {
                 </div> : null
               }
 
+              <h4>Параметры</h4>
               { !operation || !operation.size ? null :
                 <Parameters
                   parameters={parameters}

@@ -92,19 +92,7 @@ export default class Responses extends React.Component {
 
     return (
       <div className="responses-wrapper">
-        <div className="opblock-section-header">
-          <h4>Responses</h4>
-            { specSelectors.isOAS3() ? null : <label htmlFor={controlId}>
-              <span>Response content type</span>
-              <ContentType value={producesValue}
-                         ariaControls={regionId}
-                         ariaLabel="Response content type"
-                         className="execute-content-type"
-                         contentTypes={produces}
-                         controlId={controlId}
-                         onChange={this.onChangeProducesWrapper} />
-                     </label> }
-        </div>
+        <h4>Ответ</h4>
         <div className="responses-inner">
           {
             !tryItOutResponse ? null

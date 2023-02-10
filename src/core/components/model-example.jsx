@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import ImPropTypes from "react-immutable-proptypes"
-import cx from "classnames"
 import randomBytes from "randombytes"
 
 export default class ModelExample extends React.Component {
@@ -56,7 +55,7 @@ export default class ModelExample extends React.Component {
   }
 
   render() {
-    let { getComponent, specSelectors, schema, example, isExecute, getConfigs, specPath, includeReadOnly, includeWriteOnly } = this.props
+    let { getComponent, specSelectors, schema, example, getConfigs, specPath, includeReadOnly, includeWriteOnly } = this.props
     let { defaultModelExpandDepth } = getConfigs()
     const ModelWrapper = getComponent("ModelWrapper")
     const HighlightCode = getComponent("highlightCode")
@@ -65,40 +64,8 @@ export default class ModelExample extends React.Component {
     const modelTabId = randomBytes(5).toString("base64")
     const modelPanelId = randomBytes(5).toString("base64")
 
-    let isOAS3 = specSelectors.isOAS3()
-
     return (
       <div className="model-example">
-        <ul className="tab" role="tablist">
-          <li className={cx("tabitem", { active: this.state.activeTab === "example" })} role="presentation">
-            <button
-              aria-controls={examplePanelId}
-              aria-selected={this.state.activeTab === "example"}
-              className="tablinks"
-              data-name="example"
-              id={exampleTabId}
-              onClick={ this.activeTab }
-              role="tab"
-            >
-              {isExecute ? "Edit Value" : "Example Value"}
-            </button>
-          </li>
-          { schema && (
-            <li className={cx("tabitem", { active: this.state.activeTab === "model" })} role="presentation">
-              <button
-                aria-controls={modelPanelId}
-                aria-selected={this.state.activeTab === "model"}
-                className={cx("tablinks", { inactive: isExecute })}
-                data-name="model"
-                id={modelTabId}
-                onClick={ this.activeTab }
-                role="tab"
-              >
-                {isOAS3 ? "Schema" : "Model" }
-              </button>
-            </li>
-          )}
-        </ul>
         {this.state.activeTab === "example" && (
           <div
             aria-hidden={this.state.activeTab !== "example"}

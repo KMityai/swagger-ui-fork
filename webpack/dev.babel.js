@@ -55,7 +55,7 @@ const devConfig = configBuilder(
         "Access-Control-Allow-Headers": "*",
       },
       port: 3200,
-      host: "0.0.0.0",
+      host: "127.0.0.1",
       hot: true,
       static: {
         directory: path.resolve(projectBasePath, "dev-helpers"),
