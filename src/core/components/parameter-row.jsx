@@ -28,6 +28,7 @@ export default class ParameterRow extends Component {
     super(props, context)
 
     this.setDefaultValue()
+    this.moveToModel = this.moveToModel.bind(this);
   }
 
   UNSAFE_componentWillReceiveProps(props) {
@@ -181,6 +182,10 @@ export default class ParameterRow extends Component {
     return `${param.get("name")}-${param.get("in")}`
   }
 
+  moveToModel() {
+    document.location.hash = 'model-' + this.modelName
+  }
+
   render() {
     let {param, rawParam, getComponent, getConfigs, isExecute, fn, onChangeConsumes, specSelectors, pathMethod, specPath, oas3Selectors} = this.props
 
@@ -278,6 +283,8 @@ export default class ParameterRow extends Component {
       }
     }
 
+    this.modelName = modelName;
+
     return (
       <tr data-param-name={param.get("name")} data-param-in={param.get("in")}>
         <td className="parameters-col_name">
@@ -298,7 +305,7 @@ export default class ParameterRow extends Component {
             !modelName ?
             <code className={'param__type'}>{schema.get('type')}</code>
             :
-            <a href={'#model-' + modelName} style={{textDecoration: "none"}}>
+            <a href={'#model-' + modelName} style={{textDecoration: "none"}} onClick={this.moveToModel}>
               <code className={'param__type'}>{schema.get('type')} ({modelName})</code>
             </a>
           }

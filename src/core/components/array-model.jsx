@@ -44,7 +44,6 @@ export default class ArrayModel extends Component {
 
     return <span className="model">
       <ModelCollapse title={titleEl} expanded={ depth <= expandDepth } collapsedContent="[...]">
-        [
           {
             properties.size ? properties.entrySeq().map( ( [ key, v ] ) => <Property key={`${key}-${v}`} propKey={ key } propVal={ v } propClass={ propClass } />) : null
           }
@@ -63,7 +62,6 @@ export default class ArrayModel extends Component {
               depth={ depth + 1 }
             />
           </span>
-        ]
       </ModelCollapse>
     </span>
   }

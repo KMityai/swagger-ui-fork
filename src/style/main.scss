@@ -322,3 +322,37 @@ summary-operation-id, .swagger-ui .opblock .opblock-summary-path, .swagger-ui .o
 .swagger-ui .operation-tag-content h4 {
   padding: 0 0 5px 0;
 }
+
+.swagger-ui .model-container .model-box {
+  background-color: #FFFFFF;
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+
+.swagger-ui .model-container .model-box table.model {
+  margin-top: 10px;
+  background-color: rgba(0,0,0,0.05);
+}
+
+.swagger-ui .model-container .model-box table.model tr.property-row td {
+  border-bottom: 1px solid #505050;
+  padding: 10px;
+}
+
+.swagger-ui .model-container .model-box table.model tr.property-row td:last-child {
+  padding: 10px 10px 10px 20px;
+}
+
+.swagger-ui .model-container .model-box table.model tr.property-row span.model button.model-box-control {
+  margin: -7px 0 0 0;
+}
+
+.swagger-ui .model-container .model-box table.model tr.property-row span.model table.model {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.swagger-ui .model-box-control:focus, .swagger-ui .models-control:focus, .swagger-ui .opblock-summary-control:focus {
+  outline: none;
+}
+
+

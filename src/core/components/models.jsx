@@ -27,6 +27,8 @@ export default class Models extends Component {
     if(isExpanded) {
       this.props.specActions.requestResolvedSubtree([...this.getSchemaBasePath(), name])
     }
+
+    this.setModelNameInHash('model-' + name)
   }
 
   onLoadModels = (ref) => {
@@ -40,6 +42,10 @@ export default class Models extends Component {
       const name = ref.getAttribute("data-name")
       this.props.layoutActions.readyToScroll([...this.getSchemaBasePath(), name], ref)
     }
+  }
+
+  setModelNameInHash = (name) => {
+    document.location.hash = name
   }
 
   render(){
@@ -57,19 +63,10 @@ export default class Models extends Component {
     const ModelCollapse = getComponent("ModelCollapse")
     const JumpToPath = getComponent("JumpToPath", true)
 
-    return <section className={ showModels ? "models is-open" : "models"} ref={this.onLoadModels}>
-      <h4>
-        <button
-          aria-expanded={showModels}
-          className="models-control"
-          onClick={() => layoutActions.show(specPathBase, !showModels)}
-        >
-          <span>{isOAS3 ? "Schemas" : "Models"}</span>
-          <svg width="20" height="20" aria-hidden="true" focusable="false">
-            <use xlinkHref={showModels ? "#large-arrow-up" : "#large-arrow-down"} />
-          </svg>
-        </button>
-      </h4>
+    return <div className={ showModels ? "models is-open" : "models"} ref={this.onLoadModels}>
+      <h3>
+        <span>{isOAS3 ? "Schemas" : "Модели"}</span>
+      </h3>
       <Collapse isOpened={showModels}>
         {
           definitions.entrySeq().map(([name])=>{
@@ -132,6 +129,6 @@ export default class Models extends Component {
           }).toArray()
         }
       </Collapse>
-    </section>
+    </div>
   }
 }

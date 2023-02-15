@@ -71,6 +71,40 @@ export default class ModelCollapse extends Component {
       if( Im.is(scrollToKey, this.props.specPath) ) this.toggleCollapsed()
       this.props.layoutActions.readyToScroll(this.props.specPath, ref.parentElement)
     }
+
+    this.moveToModelByHash()
+    this.onHashChange()
+  }
+
+  moveToModelByHash = () => {
+    const hashModelName = document.location.hash.replace('#/model-', '')
+
+    if (hashModelName === this.props.displayName) {
+      setTimeout(() => {
+        const modelEl = document.getElementById(document.location.hash.replace('#/', ''));
+
+        if (modelEl) {
+          modelEl.scrollIntoView({block: "start"})
+
+          this.props.onToggle(this.props.modelName, true)
+        }
+      }, 500)
+    }
+  }
+
+  onHashChange = () => {
+    window.addEventListener('hashchange', (event) => {
+      const hashModelName = document.location.hash.replace('#/model-', '')
+
+      console.log(hashModelName, this.props.displayName)
+
+      if (
+        document.location.hash.replace('#/model-', '') === this.props.displayName ||
+        document.location.hash.replace('#model-', '') === this.props.displayName
+      ) {
+        this.props.onToggle(this.props.modelName, true)
+      }
+    });
   }
 
   render () {

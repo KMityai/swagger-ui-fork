@@ -78,7 +78,6 @@ export default class ObjectModel extends Component {
         expanded={ expanded ? true : depth <= expandDepth }
         collapsedContent={ collapsedContent }>
 
-         <span className="brace-open object">{ braceOpen }</span>
           {
             !isRef ? null : <JumpToPathSection />
           }
@@ -87,8 +86,7 @@ export default class ObjectModel extends Component {
               <table className="model"><tbody>
               {
                 !description ? null : <tr className="description">
-                    <td>description:</td>
-                    <td>
+                    <td colSpan={2} style={{textAlign: "center"}}>
                       <Markdown source={ description } />
                     </td>
                   </tr>
@@ -103,7 +101,7 @@ export default class ObjectModel extends Component {
                       true
                     </td>
                   </tr>
-               
+
               }
               {
                 !(properties && properties.size) ? null : properties.entrySeq().filter(
@@ -232,7 +230,6 @@ export default class ObjectModel extends Component {
               </tbody></table>
           }
         </span>
-        <span className="brace-close">{ braceClose }</span>
       </ModelCollapse>
       {
         infoProperties.size ? infoProperties.entrySeq().map( ( [ key, v ] ) => <Property key={`${key}-${v}`} propKey={ key } propVal={ v } propClass={ propClass } />) : null
